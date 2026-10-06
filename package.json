@@ -9,18 +9,27 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@better-auth/drizzle-adapter": "^1.7.7",
+    "better-auth": "^1.7.7",
+    "date-fns": "^4.4.0",
+    "dotenv": "^18.0.5",
+    "drizzle-orm": "^0.45.3",
     "next": "16.3.8",
+    "postgres": "^3.4.9",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   },
   "packageManager": "pnpm@12.6.0"
