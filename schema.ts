@@ -1,5 +1,41 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  text,
+  timestamp,
+  boolean,
+  index,
+  uuid,
+  varchar,
+} from "drizzle-orm/pg-core";
+
+export const habitsTable = pgTable("habits", {
+  habitId: uuid("habit_id").primaryKey().defaultRandom(),
+  habitName: varchar("habit_name", { length: 50 }).notNull(),
+  habitDescription: varchar("description", { length: 200 }).default(
+    "No description provided",
+  ),
+  creatorName: text("habit_creator_name")
+    .references(() => user.name)
+    .notNull(),
+  creatorId: text("habit_creator_id")
+    .references(() => user.id)
+    .notNull(),
+});
+
+export const habitLogTable = pgTable("habit_log", {
+  log_id: uuid("log_id").primaryKey().defaultRandom(),
+  loggedHabitId: uuid("logged_habit_id")
+    .references(() => habitsTable.habitId)
+    .notNull(),
+  loggedAt: timestamp("date", { mode: "string" }).defaultNow().notNull(),
+  loggerId: text("logger_id")
+    .references(() => user.id)
+    .notNull(),
+  loggerName: text("logger_name")
+    .references(() => user.name)
+    .notNull(),
+});
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
