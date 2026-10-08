@@ -35,7 +35,7 @@ export default function SignUpPage() {
             placeholder="Password"
           />
 
-          <button type="submit" className="mt-2 border-2 border-[#f493e7] rounded-md bg-[#ce64c0] py-1 px-2">
+          <button type="submit" className="mt-2 border-2 border-[#f493e7] rounded-md bg-[#ce64c0] duration-400 hover:bg-[#913d86] py-1 px-2">
             Sign Up
           </button>
 
