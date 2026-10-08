@@ -15,6 +15,13 @@
       "when": 1791388221666,
       "tag": "0001_neat_vengeance",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791430928831,
+      "tag": "0002_lonely_outlaw_kid",
+      "breakpoints": true
     }
   ]
 }
