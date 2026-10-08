@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { FaFire, FaHome } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
+import { ImFire } from "react-icons/im"
 
 export default function HomeNavbar() {
   return (
@@ -14,7 +15,7 @@ export default function HomeNavbar() {
         <FaHome />
       </Link>
       <Link href="/streak">
-        <FaFire />
+        <ImFire/>
       </Link>
     </nav>
   );
