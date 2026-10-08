@@ -11,8 +11,8 @@ import {
 
 export const habitsTable = pgTable("habits", {
   habitId: uuid("habit_id").primaryKey().defaultRandom(),
-  habitName: varchar("habit_name", { length: 50 }).notNull(),
-  habitDescription: varchar("description", { length: 200 }).default(
+  habitName: varchar("habit_name", { length: 28 }).notNull(),
+  habitDescription: varchar("description", { length: 28 }).default(
     "No description provided",
   ),
   creatorName: text("habit_creator_name")
