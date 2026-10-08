@@ -3,9 +3,28 @@
 import { FaArrowUp, FaPlus, FaX } from "react-icons/fa6";
 import HomeNavbar from "./home-nav-bar";
 import DisplayHabits from "./display-habits";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getHabits, newHabit } from "@/utils/db-actions";
+import { HabitDisplay } from "@/utils/interfaces";
 
-export default function HomePageClient() {
+interface Props {
+  userName: string;
+  userId: string;
+}
+
+export default function HomePageClient({ userName, userId }: Props) {
+  const [newHabitName, setNewHabitName] = useState<string>("");
+  const [newHabitDesc, setNewHabitDesc] = useState<string>("");
+  const [habits, setHabits] = useState<HabitDisplay[]>([]);
+
+  useEffect(() => {
+    const getHabitFunction = async () => {
+      setHabits(await getHabits(userName, userId));
+    }
+
+    getHabitFunction()
+  }, [])
+
   const openModal = () => {
     let modal = document.getElementById("modal")!;
     modal.style.display = "block";
@@ -16,8 +35,17 @@ export default function HomePageClient() {
     modal.style.display = "none";
   };
 
-  const [newHabitName, setNewHabitName] = useState<string>("");
-  const [newHabitDesc, setNewHabitDesc] = useState<string>("");
+  const newHabitFunction = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      await newHabit(newHabitName, newHabitDesc, userName, userId);
+
+      location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="text-center h-screen w-150 border border-[#f493e7] bg-[#ab549f]">
@@ -27,7 +55,7 @@ export default function HomePageClient() {
         Your <span className="underline">Habits</span>
       </h2>
 
-      <DisplayHabits />
+      <DisplayHabits habits={habits} setHabits={setHabits}/>
 
       <button
         className="fixed left-[70%] top-[80%] border-2 border-[#f493e7] rounded-md bg-[#e077d2] duration-400 hover:bg-[#ac53a0] text-3xl py-2 px-3"
@@ -64,7 +92,11 @@ export default function HomePageClient() {
               <FaX />
             </button>
 
-            <button type="submit" className="w-[50%] flex justify-center items-center border border-[#f493e7] rounded-md bg-[#ce64c0] duration-400 hover:bg-[#913d86] py-2">
+            <button
+              type="submit"
+              className="w-[50%] flex justify-center items-center border border-[#f493e7] rounded-md bg-[#ce64c0] duration-400 hover:bg-[#913d86] py-2"
+              onClick={newHabitFunction}
+            >
               <FaArrowUp />
             </button>
           </div>

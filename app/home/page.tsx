@@ -6,9 +6,12 @@ export default async function HomePage() {
   const session = await getSession();
   if(!session) redirect("/sign-in");
 
+  const userName = session.user.name
+  const userId = session.user.id
+
   return (
     <div  className="flex justify-center">
-      <HomePageClient/>
+      <HomePageClient userName={userName} userId={userId}/>
     </div>
   )
 }
