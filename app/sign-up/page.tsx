@@ -17,25 +17,25 @@ export default function SignUpPage() {
             type="text"
             name="name"
             required
-            className="border-2 border-[#f493e7] rounded-md bg-[#e077d2] py-1 px-2 mt-2"
+            className="border-2 border-[#f493e7] rounded-md bg-[#ce64c0] py-1 px-2 mt-2"
             placeholder="Name"
           />
           <input
             type="text"
             name="email"
             required
-            className="border-2 border-[#f493e7] rounded-md bg-[#e077d2] py-1 px-2"
+            className="border-2 border-[#f493e7] rounded-md bg-[#ce64c0] py-1 px-2"
             placeholder="Email"
           />
           <input
             type="password"
             name="password"
             required
-            className="border-2 border-[#f493e7] rounded-md bg-[#e077d2] py-1 px-2"
+            className="border-2 border-[#f493e7] rounded-md bg-[#ce64c0] py-1 px-2"
             placeholder="Password"
           />
 
-          <button type="submit" className="mt-2 border-2 border-[#f493e7] rounded-md bg-[#e077d2] py-1 px-2">
+          <button type="submit" className="mt-2 border-2 border-[#f493e7] rounded-md bg-[#ce64c0] py-1 px-2">
             Sign Up
           </button>
 
