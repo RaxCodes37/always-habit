@@ -1,36 +1,24 @@
 "use client";
 
 import { HabitDisplay } from "@/utils/interfaces";
+import React, { useEffect } from "react";
 import { ImFire } from "react-icons/im";
 
-export default function DisplayHabits() {
-  const sampleHabits: HabitDisplay[] = [
-    {
-      habitId: "1",
-      habitName: "sample habit",
-      habitDescription: "No description provided",
-    },
-    {
-      habitId: "2",
-      habitName: "sample habit 2",
-      habitDescription: "sample description long ahhh",
-    },
-    {
-      habitId: "3",
-      habitName: "sample habit 3",
-      habitDescription: "sample description 2",
-    },
-  ];
+interface Props {
+  habits: HabitDisplay[];
+  setHabits: React.Dispatch<React.SetStateAction<HabitDisplay[]>>;
+}
 
+export default function DisplayHabits({ habits, setHabits }: Props) {
   const logHabitFunction = async (habitId: string) => {
     //No async functionality yet, will be added later.
   };
 
   return (
     <div
-      className={`mt-3 grid ${sampleHabits.length === 1 ? "grid-cols-1" : "grid-cols-2"} gap-3 px-5`}
+      className={`mt-3 grid ${habits.length === 1 ? "grid-cols-1" : "grid-cols-2"} gap-3 px-5`}
     >
-      {sampleHabits.map((habit) => (
+      {habits.map((habit) => (
         <div
           className="border-2 border-[#f493e7] rounded-md bg-[#e077d2] py-1 px-2 min-h-15 h-fit text-left"
           key={habit.habitId}
