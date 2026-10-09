@@ -1,6 +1,6 @@
 "use server";
 
-import { habitsTable } from "@/schema";
+import { habitLogTable, habitsTable } from "@/schema";
 import { db } from "..";
 import { and, eq } from "drizzle-orm";
 import { HabitDisplay } from "./interfaces";
@@ -39,3 +39,15 @@ export const getHabits = async (creatorName: string, creatorId: string) => {
 
 export const removeHabit = async (habitId: string) =>
   await db.delete(habitsTable).where(eq(habitsTable.habitId, habitId));
+
+export const logHabit = async (
+  loggedHabitId: string,
+  loggerName: string,
+  loggerId: string,
+) => {
+  await db.insert(habitLogTable).values({
+    loggedHabitId,
+    loggerId,
+    loggerName,
+  });
+};
