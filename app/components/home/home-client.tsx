@@ -4,7 +4,7 @@ import { FaArrowUp, FaPlus, FaX } from "react-icons/fa6";
 import HomeNavbar from "./home-nav-bar";
 import DisplayHabits from "./display-habits";
 import React, { useEffect, useState } from "react";
-import { getHabits, newHabit } from "@/utils/db-actions";
+import { getHabits, newHabit, removeHabit } from "@/utils/db-actions";
 import { HabitDisplay } from "@/utils/interfaces";
 
 interface Props {
@@ -47,6 +47,20 @@ export default function HomePageClient({ userName, userId }: Props) {
     }
   };
 
+  const logHabitFunction = async (habitId: string) => {
+    //No async functionality yet, will be added later.
+  };
+
+  const removeHabitFunction = async (habitId: string) => {
+    setHabits(habits.filter(h => h.habitId !== habitId));
+
+    try {
+      await removeHabit(habitId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="text-center h-screen w-150 border border-[#f493e7] bg-[#ab549f]">
       <HomeNavbar />
@@ -55,7 +69,7 @@ export default function HomePageClient({ userName, userId }: Props) {
         Your <span className="underline">Habits</span>
       </h2>
 
-      <DisplayHabits habits={habits} setHabits={setHabits}/>
+      <DisplayHabits habits={habits} logHabitFunction={logHabitFunction} removeHabitFunction={removeHabitFunction}/>
 
       <button
         className="fixed left-[70%] top-[80%] border-2 border-[#f493e7] rounded-md bg-[#e077d2] duration-400 hover:bg-[#ac53a0] text-3xl py-2 px-3"
