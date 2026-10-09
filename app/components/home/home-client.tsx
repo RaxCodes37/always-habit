@@ -4,7 +4,7 @@ import { FaArrowUp, FaPlus, FaX } from "react-icons/fa6";
 import HomeNavbar from "./home-nav-bar";
 import DisplayHabits from "./display-habits";
 import React, { useEffect, useState } from "react";
-import { getHabits, newHabit, removeHabit } from "@/utils/db-actions";
+import { getHabits, logHabit, newHabit, removeHabit } from "@/utils/db-actions";
 import { HabitDisplay } from "@/utils/interfaces";
 
 interface Props {
@@ -20,10 +20,10 @@ export default function HomePageClient({ userName, userId }: Props) {
   useEffect(() => {
     const getHabitFunction = async () => {
       setHabits(await getHabits(userName, userId));
-    }
+    };
 
-    getHabitFunction()
-  }, [])
+    getHabitFunction();
+  }, []);
 
   const openModal = () => {
     let modal = document.getElementById("modal")!;
@@ -48,18 +48,22 @@ export default function HomePageClient({ userName, userId }: Props) {
   };
 
   const logHabitFunction = async (habitId: string) => {
-    //No async functionality yet, will be added later.
+    try {
+      await logHabit(habitId, userName, userId);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const removeHabitFunction = async (habitId: string) => {
-    setHabits(habits.filter(h => h.habitId !== habitId));
+    setHabits(habits.filter((h) => h.habitId !== habitId));
 
     try {
       await removeHabit(habitId);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   return (
     <div className="text-center h-screen w-150 border border-[#f493e7] bg-[#ab549f]">
@@ -69,7 +73,11 @@ export default function HomePageClient({ userName, userId }: Props) {
         Your <span className="underline">Habits</span>
       </h2>
 
-      <DisplayHabits habits={habits} logHabitFunction={logHabitFunction} removeHabitFunction={removeHabitFunction}/>
+      <DisplayHabits
+        habits={habits}
+        logHabitFunction={logHabitFunction}
+        removeHabitFunction={removeHabitFunction}
+      />
 
       <button
         className="fixed left-[70%] top-[80%] border-2 border-[#f493e7] rounded-md bg-[#e077d2] duration-400 hover:bg-[#ac53a0] text-3xl py-2 px-3"
