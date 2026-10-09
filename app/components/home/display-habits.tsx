@@ -6,11 +6,15 @@ import { ImFire } from "react-icons/im";
 
 interface Props {
   habits: HabitDisplay[];
-  logHabitFunction: (habitId: string) => void
-  removeHabitFunction: (habitId: string) => void
+  logHabitFunction: (habitId: string) => void;
+  removeHabitFunction: (habitId: string) => void;
 }
 
-export default function DisplayHabits({ habits, logHabitFunction, removeHabitFunction }: Props) {
+export default function DisplayHabits({
+  habits,
+  logHabitFunction,
+  removeHabitFunction,
+}: Props) {
   return (
     <div
       className={`mt-3 grid ${habits.length === 1 ? "grid-cols-1" : "grid-cols-2"} gap-3 px-5`}
