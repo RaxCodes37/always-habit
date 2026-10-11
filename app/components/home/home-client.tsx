@@ -48,6 +48,12 @@ export default function HomePageClient({ userName, userId }: Props) {
   };
 
   const logHabitFunction = async (habitId: string) => {
+    let logButton = document.getElementById(`log-btn-${habitId}`)!;
+
+    logButton.style.backgroundColor = "#FF9501";
+    logButton.style.borderColor = "#FFC801";
+    logButton.style.color = "#FFC801";
+    
     try {
       await logHabit(habitId, userName, userId);
     } catch (error) {
