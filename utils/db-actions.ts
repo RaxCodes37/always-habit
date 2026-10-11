@@ -37,9 +37,12 @@ export const getHabits = async (creatorName: string, creatorId: string) => {
   return habits as HabitDisplay[];
 };
 
-export const removeHabit = async (habitId: string) =>
+export const removeHabit = async (habitId: string) => {
+  await db
+    .delete(habitLogTable)
+    .where(eq(habitLogTable.loggedHabitId, habitId));
   await db.delete(habitsTable).where(eq(habitsTable.habitId, habitId));
-
+};
 export const logHabit = async (
   loggedHabitId: string,
   loggerName: string,
