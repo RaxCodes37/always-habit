@@ -10,7 +10,7 @@ export default async function HomePage() {
   const userId = session.user.id
 
   return (
-    <div  className="flex justify-center">
+    <div className="flex justify-center">
       <HomePageClient userName={userName} userId={userId}/>
     </div>
   )

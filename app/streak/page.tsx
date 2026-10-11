@@ -9,5 +9,9 @@ export default async function StreakPage() {
   const userName = session.user.name;
   const userId = session.user.id;
 
-  return <StreakPageClient userName={userName} userId={userId} />;
+  return (
+    <div className="flex justify-center">
+      <StreakPageClient userName={userName} userId={userId} />{" "}
+    </div>
+  );
 }
