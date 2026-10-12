@@ -2,7 +2,7 @@
 
 import { habitLogTable, habitsTable } from "@/schema";
 import { db } from "..";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { HabitDisplay, LoggedHabits } from "./interfaces";
 
 export const newHabit = async (
@@ -49,12 +49,38 @@ export const logHabit = async (
   loggerName: string,
   loggerId: string,
 ) => {
-  await db.insert(habitLogTable).values({
-    loggedHabitId,
-    loggedHabitName,
-    loggerId,
-    loggerName,
-  });
+  const checkHabitLog = db
+    .select()
+    .from(habitLogTable)
+    .where(
+      and(
+        eq(habitLogTable.loggedHabitId, loggedHabitId),
+        eq(habitLogTable.loggerId, loggerId),
+      ),
+    );
+
+  if ((await checkHabitLog).length < 1) {
+    await db.insert(habitLogTable).values({
+      loggedHabitId,
+      loggedHabitName,
+      loggerId,
+      loggerName,
+    });
+
+    await db
+      .update(habitLogTable)
+      .set({
+        logAmount: sql`${habitLogTable.logAmount} + 1`,
+      })
+      .where(eq(habitLogTable.loggedHabitId, loggedHabitId));
+  } else {
+    await db
+      .update(habitLogTable)
+      .set({
+        logAmount: sql`${habitLogTable.logAmount} + 1`,
+      })
+      .where(eq(habitLogTable.loggedHabitId, loggedHabitId));
+  }
 };
 
 export const getLoggedHabits = async (loggerId: string, loggerName: string) => {

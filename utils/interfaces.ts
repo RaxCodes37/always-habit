@@ -11,4 +11,5 @@ export interface LoggedHabits {
   loggedAt: string;
   loggerId: string;
   loggerName: string;
+  logAmount: number
 }
