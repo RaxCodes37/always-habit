@@ -6,6 +6,7 @@ export interface HabitDisplay {
 
 export interface LoggedHabits {
   log_id: string;
+  loggedHabitName: string;
   loggedHabitId: string;
   loggedAt: string;
   loggerId: string;
