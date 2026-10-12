@@ -45,11 +45,13 @@ export const removeHabit = async (habitId: string) => {
 };
 export const logHabit = async (
   loggedHabitId: string,
+  loggedHabitName: string,
   loggerName: string,
   loggerId: string,
 ) => {
   await db.insert(habitLogTable).values({
     loggedHabitId,
+    loggedHabitName,
     loggerId,
     loggerName,
   });
@@ -66,5 +68,5 @@ export const getLoggedHabits = async (loggerId: string, loggerName: string) => {
       ),
     );
 
-  return loggedHabits as LoggedHabits[]
+  return loggedHabits as LoggedHabits[];
 };

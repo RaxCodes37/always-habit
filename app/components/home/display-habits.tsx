@@ -6,7 +6,7 @@ import { ImFire } from "react-icons/im";
 
 interface Props {
   habits: HabitDisplay[];
-  logHabitFunction: (habitId: string) => void;
+  logHabitFunction: (habitId: string, habitName: string) => void;
   removeHabitFunction: (habitId: string) => void;
 }
 
@@ -32,7 +32,7 @@ export default function DisplayHabits({
             <div className="flex items-center gap-4 h-15">
               <button
                 className="h-10 w-10 text-2xl flex justify-center items-center border border-gray-350 bg-gray-300 text-gray-400 duration-400 hover:bg-[#FF9501] hover:border-[#FFC801] hover:text-[#FFC801] rounded-full p-1"
-                onClick={() => logHabitFunction(habit.habitId)}
+                onClick={() => logHabitFunction(habit.habitId, habit.habitName)}
                 id={`log-btn-${habit.habitId}`}
               >
                 <ImFire />
