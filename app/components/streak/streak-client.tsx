@@ -26,7 +26,7 @@ export default function StreakPageClient({ userName, userId }: Props) {
     <div className="text-center h-screen w-150 border border-[#f493e7] bg-[#ab549f]">
       <HomeNavbar />
 
-      <StreakRadarChartComponent />
+      <StreakRadarChartComponent loggedHabits={loggedHabits}/>
     </div>
   );
 }
