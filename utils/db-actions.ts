@@ -3,7 +3,7 @@
 import { habitLogTable, habitsTable } from "@/schema";
 import { db } from "..";
 import { and, eq } from "drizzle-orm";
-import { HabitDisplay } from "./interfaces";
+import { HabitDisplay, LoggedHabits } from "./interfaces";
 
 export const newHabit = async (
   habitName: string,
@@ -53,4 +53,18 @@ export const logHabit = async (
     loggerId,
     loggerName,
   });
+};
+
+export const getLoggedHabits = async (loggerId: string, loggerName: string) => {
+  const loggedHabits = await db
+    .select()
+    .from(habitLogTable)
+    .where(
+      and(
+        eq(habitLogTable.loggerId, loggerId),
+        eq(habitLogTable.loggerName, loggerName),
+      ),
+    );
+
+  return loggedHabits as LoggedHabits[]
 };
