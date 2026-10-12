@@ -25,6 +25,9 @@ export const habitsTable = pgTable("habits", {
 
 export const habitLogTable = pgTable("habit_log", {
   log_id: uuid("log_id").primaryKey().defaultRandom(),
+  loggedHabitName: varchar("logged_habit_name")
+    .references(() => habitsTable.habitName)
+    .notNull(),
   loggedHabitId: uuid("logged_habit_id")
     .references(() => habitsTable.habitId)
     .notNull(),
