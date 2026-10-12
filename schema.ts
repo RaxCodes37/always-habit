@@ -7,6 +7,7 @@ import {
   index,
   uuid,
   varchar,
+  integer,
 } from "drizzle-orm/pg-core";
 
 export const habitsTable = pgTable("habits", {
@@ -38,6 +39,7 @@ export const habitLogTable = pgTable("habit_log", {
   loggerName: text("logger_name")
     .references(() => user.name)
     .notNull(),
+  logAmount: integer("logged_amount").notNull().default(0),
 });
 
 export const user = pgTable("user", {
