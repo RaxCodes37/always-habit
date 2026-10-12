@@ -1,0 +1,1 @@
+ALTER TABLE "habit_log" ADD COLUMN "logged_amount" integer DEFAULT 0 NOT NULL;
