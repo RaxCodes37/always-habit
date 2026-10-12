@@ -1,0 +1,2 @@
+ALTER TABLE "habit_log" ADD COLUMN "logged_habit_name" varchar NOT NULL;--> statement-breakpoint
+ALTER TABLE "habit_log" ADD CONSTRAINT "habit_log_logged_habit_name_habits_habit_name_fk" FOREIGN KEY ("logged_habit_name") REFERENCES "public"."habits"("habit_name") ON DELETE no action ON UPDATE no action;
