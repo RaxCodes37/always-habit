@@ -3,3 +3,11 @@ export interface HabitDisplay {
   habitName: string;
   habitDescription: string;
 }
+
+export interface LoggedHabits {
+  log_id: string;
+  loggedHabitId: string;
+  loggedAt: string;
+  loggerId: string;
+  loggerName: string;
+}
