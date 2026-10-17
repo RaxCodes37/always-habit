@@ -11,5 +11,24 @@ export interface LoggedHabits {
   loggedAt: string;
   loggerId: string;
   loggerName: string;
-  logAmount: number
+  logAmount: number;
+}
+
+export interface FullHabitInfo {
+  habits: {
+    habitId: string;
+    habitName: string;
+    habitDescription: string;
+    creatorName: string;
+    creatorId: string;
+  };
+  habit_log: {
+    log_id: string;
+    loggedHabitName: string;
+    loggedHabitId: string;
+    loggedAt: string;
+    loggerId: string;
+    loggerName: string;
+    logAmount: number;
+  };
 }
