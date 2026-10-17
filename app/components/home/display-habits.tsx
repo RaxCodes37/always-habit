@@ -1,7 +1,8 @@
 "use client";
 
 import { HabitDisplay } from "@/utils/interfaces";
-import { FaTrash } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { FaPlus, FaTrash } from "react-icons/fa";
 import { ImFire } from "react-icons/im";
 
 interface Props {
@@ -15,6 +16,8 @@ export default function DisplayHabits({
   logHabitFunction,
   removeHabitFunction,
 }: Props) {
+  const router = useRouter();
+
   return (
     <div>
       {habits.length < 1 ? (
@@ -31,6 +34,14 @@ export default function DisplayHabits({
               key={habit.habitId}
             >
               <div className="flex justify-between items-center">
+                <div className="flex items-center gap-4 h-15">
+                  <button
+                    className="h-full w-10 text-xl flex justify-center items-center bg-[#c762b9] duration-400 hover:bg-[#ad51a1] rounded-md"
+                    onClick={() => router.push(`habit/${habit.habitId}`)}
+                  >
+                    <FaPlus />
+                  </button>
+                </div>
                 <div className="block px-2">
                   <p>{habit.habitName} </p>
                   <p className="text-[#ffa7f3]">{habit.habitDescription}</p>
