@@ -13,7 +13,7 @@ export default async function HabitPage({ params }: HabitPageParams) {
   const { habitId } = await params;
 
   return (
-    <div>
+    <div className="flex justify-center">
       <HabitPageClient habitId={habitId} />
     </div>
   );
