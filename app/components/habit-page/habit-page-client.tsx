@@ -3,6 +3,9 @@
 import { getSpecificHabit } from "@/utils/db-actions";
 import { FullHabitInfo } from "@/utils/interfaces";
 import { useEffect, useState } from "react";
+import DisplayHabitInfo from "./display-habit-info";
+import { FaArrowLeft } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 interface Props {
   habitId: string;
@@ -10,6 +13,7 @@ interface Props {
 
 export default function HabitPageClient({ habitId }: Props) {
   const [habitInfo, setHabitInfo] = useState<FullHabitInfo[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const getHabitInfo = async () => {
@@ -19,5 +23,16 @@ export default function HabitPageClient({ habitId }: Props) {
     getHabitInfo();
   }, []);
 
-  return <div></div>;
+  return (
+    <div className="h-screen w-150 border border-[#f493e7] bg-[#ab549f]">
+      <button
+        className="m-3 border-2 border-[#f493e7] rounded-md bg-[#ce64c0] duration-400 hover:bg-[#913d86] py-2 px-3"
+        onClick={() => router.back()}
+      >
+        <FaArrowLeft />
+      </button>
+
+      <DisplayHabitInfo habitInfo={habitInfo} />
+    </div>
+  );
 }
