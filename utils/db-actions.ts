@@ -3,7 +3,7 @@
 import { habitLogTable, habitsTable } from "@/schema";
 import { db } from "..";
 import { and, eq, sql } from "drizzle-orm";
-import { HabitDisplay, LoggedHabits } from "./interfaces";
+import { FullHabitInfo, HabitDisplay, LoggedHabits } from "./interfaces";
 
 export const newHabit = async (
   habitName: string,
@@ -35,6 +35,19 @@ export const getHabits = async (creatorName: string, creatorId: string) => {
     );
 
   return habits as HabitDisplay[];
+};
+
+export const getSpecificHabit = async (habitId: string) => {
+  const habit = await db
+    .select()
+    .from(habitsTable)
+    .leftJoin(
+      habitLogTable,
+      eq(habitsTable.habitId, habitLogTable.loggedHabitId),
+    )
+    .where(eq(habitsTable.habitId, habitId));
+
+  return habit as FullHabitInfo[];
 };
 
 export const removeHabit = async (habitId: string) => {
