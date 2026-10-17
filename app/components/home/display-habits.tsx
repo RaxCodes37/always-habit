@@ -2,8 +2,9 @@
 
 import { HabitDisplay } from "@/utils/interfaces";
 import { useRouter } from "next/navigation";
-import { FaPlus, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { ImFire } from "react-icons/im";
+import { GrMoreVertical } from "react-icons/gr";
 
 interface Props {
   habits: HabitDisplay[];
@@ -39,7 +40,7 @@ export default function DisplayHabits({
                     className="h-full w-10 text-xl flex justify-center items-center bg-[#c762b9] duration-400 hover:bg-[#ad51a1] rounded-md"
                     onClick={() => router.push(`habit/${habit.habitId}`)}
                   >
-                    <FaPlus />
+                    <GrMoreVertical />
                   </button>
                 </div>
                 <div className="block px-2">
