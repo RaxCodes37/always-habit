@@ -116,11 +116,19 @@ export const editHabit = async (
   habitDescription: string,
   habitId: string,
 ) => {
-  await db
-    .update(habitsTable)
-    .set({
-      habitName,
-      habitDescription,
-    })
-    .where(eq(habitsTable.habitId, habitId));
+  db.transaction(async (tx) => {
+    await tx
+      .update(habitsTable)
+      .set({
+        habitName,
+        habitDescription,
+      })
+      .where(eq(habitsTable.habitId, habitId));
+    await tx
+      .update(habitLogTable)
+      .set({
+        loggedHabitName: habitName,
+      })
+      .where(eq(habitLogTable.loggedHabitId, habitId));
+  });
 };
