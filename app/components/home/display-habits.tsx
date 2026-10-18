@@ -27,7 +27,7 @@ export default function DisplayHabits({
         </div>
       ) : (
         <div
-          className={`mt-3 grid ${habits.length <= 1 ? "grid-cols-1" : "grid-cols-2"} gap-3 px-5`}
+          className={`mt-3 grid grid-cols-1 gap-3 px-5`}
         >
           {habits.map((habit) => (
             <div
@@ -42,10 +42,10 @@ export default function DisplayHabits({
                   >
                     <GrMoreVertical />
                   </button>
-                </div>
-                <div className="block px-2">
-                  <p>{habit.habitName} </p>
-                  <p className="text-[#ffa7f3]">{habit.habitDescription}</p>
+                  <div className="block px-2">
+                    <p>{habit.habitName} </p>
+                    <p className="text-[#ffcbf8]">{habit.habitDescription}</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-4 h-15">
                   <button
