@@ -24,7 +24,12 @@ export default function DisplayHabitInfo({ habitInfo }: Props) {
                 </p>
               )}
             </div>
+
+            <button className="border-2 border-[#f493e7] rounded-md bg-[#d267c3] duration-400 hover:bg-[#bb58ad] text-2xl pr-3 pl-4">
+              <FaEdit />
+            </button>
           </div>
+          <hr className="my-2 text-[#f493e7]" />
         </div>
       ))}
     </div>
