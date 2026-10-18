@@ -1,14 +1,41 @@
 "use client";
 
+import { editHabit } from "@/utils/db-actions";
 import { FullHabitInfo } from "@/utils/interfaces";
-import { FaEdit } from "react-icons/fa";
-import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
+import { useState } from "react";
+import { Legend, Line, LineChart, XAxis, YAxis } from "recharts";
+import EditHabitComponent from "./edit-habit";
 
 interface Props {
   habitInfo: FullHabitInfo[];
 }
 
 export default function DisplayHabitInfo({ habitInfo }: Props) {
+  const [newHabitName, setNewHabitName] = useState<string>("");
+  const [newHabitDesc, setNewHabitDesc] = useState<string>("");
+
+  const openModal = () => {
+    let modal = document.getElementById("modal")!;
+    modal.style.display = "block";
+  };
+
+  const closeModal = () => {
+    let modal = document.getElementById("modal")!;
+    modal.style.display = "none";
+  };
+
+  const editHabitFunction = async (habitId: string) => {
+    event?.preventDefault();
+
+    try {
+      await editHabit(newHabitName, newHabitDesc, habitId);
+
+      location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="mx-3 p-2 border border-[#f493e7] rounded-md bg-[#E077D2]">
       {habitInfo.map((habit) => (
@@ -25,9 +52,16 @@ export default function DisplayHabitInfo({ habitInfo }: Props) {
               )}
             </div>
 
-            <button className="border-2 border-[#f493e7] rounded-md bg-[#d267c3] duration-400 hover:bg-[#bb58ad] text-2xl pr-3 pl-4">
-              <FaEdit />
-            </button>
+            <EditHabitComponent
+              openModal={openModal}
+              closeModal={closeModal}
+              newHabitName={newHabitName}
+              setNewHabitName={setNewHabitName}
+              newHabitDesc={newHabitDesc}
+              setNewHabitDesc={setNewHabitDesc}
+              editHabitFunction={editHabitFunction}
+              habitId={habit.habits.habitId}
+            />
           </div>
           <hr className="my-2 text-[#f493e7]" />
           {habit.habit_log === null || habit.habit_log.logAmount === 0 ? (
@@ -40,7 +74,10 @@ export default function DisplayHabitInfo({ habitInfo }: Props) {
               responsive
               data={habitInfo}
             >
-              <Line dataKey="habit_log.logAmount" name={habit.habits.habitName}/>
+              <Line
+                dataKey="habit_log.logAmount"
+                name={habit.habits.habitName}
+              />
               <XAxis dataKey={`habit_log.loggedAt`} />
               <YAxis />
               <Legend />
