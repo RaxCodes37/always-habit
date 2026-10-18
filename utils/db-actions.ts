@@ -56,6 +56,7 @@ export const removeHabit = async (habitId: string) => {
     .where(eq(habitLogTable.loggedHabitId, habitId));
   await db.delete(habitsTable).where(eq(habitsTable.habitId, habitId));
 };
+
 export const logHabit = async (
   loggedHabitId: string,
   loggedHabitName: string,
@@ -108,4 +109,18 @@ export const getLoggedHabits = async (loggerId: string, loggerName: string) => {
     );
 
   return loggedHabits as LoggedHabits[];
+};
+
+export const editHabit = async (
+  habitName: string,
+  habitDescription: string,
+  habitId: string,
+) => {
+  await db
+    .update(habitsTable)
+    .set({
+      habitName,
+      habitDescription,
+    })
+    .where(eq(habitsTable.habitId, habitId));
 };
