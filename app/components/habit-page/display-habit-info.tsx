@@ -30,6 +30,13 @@ export default function DisplayHabitInfo({ habitInfo }: Props) {
             </button>
           </div>
           <hr className="my-2 text-[#f493e7]" />
+          {habit.habit_log === null || habit.habit_log.logAmount === 0 ? (
+            <p className="font-2xl font-bold">
+              This habit hasn't been logged yet.
+            </p>
+          ) : (
+            <div></div>
+          )}
         </div>
       ))}
     </div>
