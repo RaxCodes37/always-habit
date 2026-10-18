@@ -3,7 +3,7 @@
 import { editHabit } from "@/utils/db-actions";
 import { FullHabitInfo } from "@/utils/interfaces";
 import { useState } from "react";
-import { Legend, Line, LineChart, XAxis, YAxis } from "recharts";
+import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
 import EditHabitComponent from "./edit-habit";
 
 interface Props {
@@ -78,8 +78,8 @@ export default function DisplayHabitInfo({ habitInfo }: Props) {
                 dataKey="habit_log.logAmount"
                 name={habit.habits.habitName}
               />
-              <XAxis dataKey={`habit_log.loggedAt`} />
-              <YAxis />
+              <XAxis dataKey={`habit_log.loggedAt`} stroke="#ffc4f7" />
+              <YAxis stroke="#ffc4f7" />
               <Legend />
             </LineChart>
           )}
