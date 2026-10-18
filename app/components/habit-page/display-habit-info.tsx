@@ -73,14 +73,30 @@ export default function DisplayHabitInfo({ habitInfo }: Props) {
               style={{ width: "90%", aspectRatio: 1.618, maxWidth: 600 }}
               responsive
               data={habitInfo}
+              className="mt-4"
             >
               <Line
                 dataKey="habit_log.logAmount"
                 name={habit.habits.habitName}
+                stroke="#ffc4f7"
+                fill="#ffc4f7"
               />
-              <XAxis dataKey={`habit_log.loggedAt`} stroke="#ffc4f7" />
+              <XAxis
+                dataKey="habit_log.loggedAt"
+                stroke="#ffc4f7"
+                tickFormatter={(value) =>
+                  new Date(value).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "2-digit",
+                  })
+                }
+              />
               <YAxis stroke="#ffc4f7" />
-              <Legend />
+              <Legend
+                formatter={(value) => (
+                  <span style={{ color: "#ffc4f7" }}>{value}</span>
+                )}
+              />
             </LineChart>
           )}
         </div>
