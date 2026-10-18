@@ -35,7 +35,16 @@ export default function DisplayHabitInfo({ habitInfo }: Props) {
               This habit hasn't been logged yet.
             </p>
           ) : (
-            <div></div>
+            <LineChart
+              style={{ width: "90%", aspectRatio: 1.618, maxWidth: 600 }}
+              responsive
+              data={habitInfo}
+            >
+              <Line dataKey="habit_log.logAmount" name={habit.habits.habitName}/>
+              <XAxis dataKey={`habit_log.loggedAt`} />
+              <YAxis />
+              <Legend />
+            </LineChart>
           )}
         </div>
       ))}
