@@ -12,7 +12,7 @@ export default function HomeNavbar() {
   const router = useRouter();
 
   return (
-    <nav className="flex items-center justify-between border-b-2 py-3 px-20 text-2xl bg-[#e877d9] border-[#f493e7] text-shadow-black rounded-b-md">
+    <nav className="flex items-center justify-between border-b-2 py-4 px-20 text-3xl bg-[#e877d9] border-[#f493e7] text-shadow-black rounded-b-md">
       <Image
         src={Logo}
         width={200}
@@ -24,7 +24,7 @@ export default function HomeNavbar() {
       <Link href="/settings">
         <FaCircleUser />
       </Link>
-      <Link href="/home" className="text-[27px]">
+      <Link href="/home" className="text-[35px]">
         <FaHome />
       </Link>
       <Link href="/streak">

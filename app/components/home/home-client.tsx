@@ -75,7 +75,7 @@ export default function HomePageClient({ userName, userId }: Props) {
     <div className="text-center h-screen w-150 border border-[#f493e7] bg-[#ab549f]">
       <HomeNavbar />
 
-      <h2 className="mt-3 text-xl font-semibold">
+      <h2 className="mt-5 text-3xl font-semibold">
         Your <span className="underline">Habits</span>
       </h2>
 
