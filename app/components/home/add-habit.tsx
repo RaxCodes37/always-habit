@@ -24,7 +24,7 @@ export default function AddHabit({
   return (
     <div>
       <button
-        className="fixed left-[70%] top-[80%] border-2 border-[#f493e7] rounded-md bg-[#e077d2] duration-400 hover:bg-[#ac53a0] text-3xl py-2 px-3"
+        className="fixed left-[85%] top-[5%] border-2 border-[#f493e7] rounded-md bg-[#e077d2] duration-400 hover:bg-[#ac53a0] text-3xl py-2 px-3"
         onClick={openModal}
       >
         <FaPlus />
