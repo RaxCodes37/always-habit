@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import DisplayHabitInfo from "./display-habit-info";
 import { FaArrowLeft } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Logo from "@/public/always-logo-transparent.png";
 
 interface Props {
   habitId: string;
@@ -33,6 +35,15 @@ export default function HabitPageClient({ habitId }: Props) {
       </button>
 
       <DisplayHabitInfo habitInfo={habitInfo} />
+
+      <Image
+        src={Logo}
+        width={200}
+        height={200}
+        alt="App Logo"
+        className="fixed left-[5%] top-[2%]"
+        onClick={() => router.push("/home")}
+      ></Image>
     </div>
   );
 }
