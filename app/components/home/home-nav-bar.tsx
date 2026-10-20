@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaHome } from "react-icons/fa";
+import { FaBookmark, FaHome } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
 import { ImFire } from "react-icons/im";
 import Image from "next/image";
@@ -26,6 +26,9 @@ export default function HomeNavbar() {
       </Link>
       <Link href="/home" className="text-[35px]">
         <FaHome />
+      </Link>
+      <Link href="/bookmark">
+        <FaBookmark />
       </Link>
       <Link href="/streak">
         <ImFire />
