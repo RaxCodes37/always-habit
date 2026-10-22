@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FaTrash } from "react-icons/fa";
 import { ImFire } from "react-icons/im";
 import { GrMoreVertical } from "react-icons/gr";
+import AddBookmarkButton from "./add-bookmark-btn";
 
 interface Props {
   habits: HabitDisplay[];
@@ -26,9 +27,7 @@ export default function DisplayHabits({
           <p>No Habits Added Yet</p>
         </div>
       ) : (
-        <div
-          className={`mt-3 grid grid-cols-1 gap-3 px-5`}
-        >
+        <div className={`mt-3 grid grid-cols-1 gap-3 px-5`}>
           {habits.map((habit) => (
             <div
               className="border-2 border-[#f493e7] rounded-md bg-[#e077d2] min-h-15 h-fit text-left"
@@ -57,12 +56,15 @@ export default function DisplayHabits({
                   >
                     <ImFire />
                   </button>
-                  <button
-                    className="h-full w-10 text-xl flex justify-center items-center bg-[#c762b9] duration-400 hover:bg-[#ad51a1] rounded-md"
-                    onClick={() => removeHabitFunction(habit.habitId)}
-                  >
-                    <FaTrash />
-                  </button>
+                  <div className="flex items-center gap-0 h-full">
+                    <AddBookmarkButton habitId={habit.habitId}/>
+                    <button
+                      className="h-full w-10 text-xl flex justify-center items-center bg-[#c762b9] duration-400 hover:bg-[#ad51a1]"
+                      onClick={() => removeHabitFunction(habit.habitId)}
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
