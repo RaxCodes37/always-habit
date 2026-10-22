@@ -1,14 +1,12 @@
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
-
+import BookmarkPageClient from "../components/bookmark/bookmark-page-client";
 
 export default async function BookmarkPage() {
-  const session = getSession();
-  if(!session) redirect("/sign-in")
+  const session = await getSession();
+  if (!session) redirect("/sign-in");
 
-  return (
-    <div>
-      
-    </div>
-  )
+  const userId = session.user.id;
+
+  return <BookmarkPageClient userId={userId}/>;
 }
