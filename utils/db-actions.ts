@@ -142,6 +142,15 @@ export const bookmarkHabit = async (habitId: string) => {
     .where(eq(habitsTable.habitId, habitId));
 };
 
+export const unbookmarkHabit = async (habitId: string) => {
+  await db
+    .update(habitsTable)
+    .set({
+      bookmarked: false,
+    })
+    .where(eq(habitsTable.habitId, habitId));
+}
+
 export const getBookmarkedHabits = async (userId: string) => {
   const bookmarkedHabits = await db
     .select()
