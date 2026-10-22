@@ -3,7 +3,7 @@
 import HomeNavbar from "./home-nav-bar";
 import DisplayHabits from "./display-habits";
 import React, { useEffect, useState } from "react";
-import { getHabits, logHabit, newHabit, removeHabit } from "@/utils/db-actions";
+import { getHabits, logHabit, newHabit } from "@/utils/db-actions";
 import { HabitDisplay } from "@/utils/interfaces";
 import AddHabit from "./add-habit";
 
@@ -61,16 +61,6 @@ export default function HomePageClient({ userName, userId }: Props) {
     }
   };
 
-  const removeHabitFunction = async (habitId: string) => {
-    setHabits(habits.filter((h) => h.habitId !== habitId));
-
-    try {
-      await removeHabit(habitId);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <div className="text-center h-screen w-150 border border-[#f493e7] bg-[#ab549f]">
       <HomeNavbar />
@@ -81,8 +71,8 @@ export default function HomePageClient({ userName, userId }: Props) {
 
       <DisplayHabits
         habits={habits}
+        setHabits={setHabits}
         logHabitFunction={logHabitFunction}
-        removeHabitFunction={removeHabitFunction}
       />
 
       <AddHabit

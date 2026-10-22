@@ -2,21 +2,22 @@
 
 import { HabitDisplay } from "@/utils/interfaces";
 import { useRouter } from "next/navigation";
-import { FaTrash } from "react-icons/fa";
 import { ImFire } from "react-icons/im";
 import { GrMoreVertical } from "react-icons/gr";
 import AddBookmarkButton from "./add-bookmark-btn";
+import DeleteHabitButton from "./delete-habit-btn";
+import React from "react";
 
 interface Props {
   habits: HabitDisplay[];
+  setHabits: React.Dispatch<React.SetStateAction<HabitDisplay[]>>
   logHabitFunction: (habitId: string, habitName: string) => void;
-  removeHabitFunction: (habitId: string) => void;
 }
 
 export default function DisplayHabits({
   habits,
+  setHabits,
   logHabitFunction,
-  removeHabitFunction,
 }: Props) {
   const router = useRouter();
 
@@ -58,12 +59,7 @@ export default function DisplayHabits({
                   </button>
                   <div className="flex items-center gap-0 h-full">
                     <AddBookmarkButton habitId={habit.habitId}/>
-                    <button
-                      className="h-full w-10 text-xl flex justify-center items-center bg-[#c762b9] duration-400 hover:bg-[#ad51a1]"
-                      onClick={() => removeHabitFunction(habit.habitId)}
-                    >
-                      <FaTrash />
-                    </button>
+                    <DeleteHabitButton habitId={habit.habitId} habits={habits} setHabits={setHabits}></DeleteHabitButton>
                   </div>
                 </div>
               </div>
