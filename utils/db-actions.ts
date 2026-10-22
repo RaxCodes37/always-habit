@@ -141,3 +141,14 @@ export const bookmarkHabit = async (habitId: string) => {
     })
     .where(eq(habitsTable.habitId, habitId));
 };
+
+export const getBookmarkedHabits = async (userId: string) => {
+  const bookmarkedHabits = await db
+    .select()
+    .from(habitsTable)
+    .where(
+      and(eq(habitsTable.creatorId, userId), eq(habitsTable.bookmarked, true)),
+    );
+
+  return bookmarkedHabits as HabitDisplay[]
+};
