@@ -132,3 +132,12 @@ export const editHabit = async (
       .where(eq(habitLogTable.loggedHabitId, habitId));
   });
 };
+
+export const bookmarkHabit = async (habitId: string) => {
+  await db
+    .update(habitsTable)
+    .set({
+      bookmarked: true,
+    })
+    .where(eq(habitsTable.habitId, habitId));
+};
