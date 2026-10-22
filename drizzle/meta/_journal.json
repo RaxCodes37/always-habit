@@ -43,6 +43,13 @@
       "when": 1792639649824,
       "tag": "0005_whole_silver_fox",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792639873622,
+      "tag": "0006_even_rachel_grey",
+      "breakpoints": true
     }
   ]
 }
