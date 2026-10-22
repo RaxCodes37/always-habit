@@ -42,6 +42,12 @@ export const habitLogTable = pgTable("habit_log", {
   logAmount: integer("logged_amount").notNull().default(0),
 });
 
+export const bookmarkTable = pgTable("bookmark", {
+  bookmarkId: uuid("bookmark_id").defaultRandom().primaryKey(),
+  bookmarkedHabitName: varchar("bookmarked_habit_name").notNull().references(() => habitsTable.habitName),
+  bookmarkedHabitId: varchar("bookmarked_habit_id").notNull().references(() => habitsTable.habitId),
+})
+
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
