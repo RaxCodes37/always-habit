@@ -3,7 +3,7 @@
 import { editHabit } from "@/utils/db-actions";
 import { FullHabitInfo } from "@/utils/interfaces";
 import { useState } from "react";
-import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
+import { Legend, Line, LineChart, XAxis, YAxis } from "recharts";
 import EditHabitComponent from "./edit-habit";
 
 interface Props {

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaArrowUp, FaEdit, FaPlus } from "react-icons/fa";
+import { FaArrowUp, FaEdit } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
 
 interface Props {
