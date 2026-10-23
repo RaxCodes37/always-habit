@@ -17,7 +17,7 @@ export default function DisplayBookmarkedHabits({ bookmarkedHabits, setBookmarke
   return (
     <div>
       {bookmarkedHabits.length < 1 ? (
-        <div className="text-center">
+        <div className="text-center mt-3">
           <p>No Habits Bookmarked Yet</p>
         </div>
       ) : (

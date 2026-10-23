@@ -24,7 +24,7 @@ export default function DisplayHabits({
   return (
     <div>
       {habits.length < 1 ? (
-        <div className="text-center">
+        <div className="text-center mt-3">
           <p>No Habits Added Yet</p>
         </div>
       ) : (
