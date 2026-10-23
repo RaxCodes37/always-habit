@@ -12,12 +12,14 @@ interface Props {
   habits: HabitDisplay[];
   setHabits: React.Dispatch<React.SetStateAction<HabitDisplay[]>>
   logHabitFunction: (habitId: string, habitName: string) => void;
+  setMessage: React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function DisplayHabits({
   habits,
   setHabits,
   logHabitFunction,
+  setMessage
 }: Props) {
   const router = useRouter();
 
@@ -58,7 +60,7 @@ export default function DisplayHabits({
                     <ImFire />
                   </button>
                   <div className="flex items-center gap-0 h-full">
-                    <AddBookmarkButton habitId={habit.habitId}/>
+                    <AddBookmarkButton habitId={habit.habitId} setMessage={setMessage}/>
                     <DeleteHabitButton habitId={habit.habitId} habits={habits} setHabits={setHabits}></DeleteHabitButton>
                   </div>
                 </div>

@@ -16,6 +16,7 @@ export default function HomePageClient({ userName, userId }: Props) {
   const [newHabitName, setNewHabitName] = useState<string>("");
   const [newHabitDesc, setNewHabitDesc] = useState<string>("");
   const [habits, setHabits] = useState<HabitDisplay[]>([]);
+  const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
     const getHabitFunction = async () => {
@@ -73,7 +74,10 @@ export default function HomePageClient({ userName, userId }: Props) {
         habits={habits}
         setHabits={setHabits}
         logHabitFunction={logHabitFunction}
+        setMessage={setMessage}
       />
+
+      <div className="mt-3">{message.trim() === "" ? <div></div> : <p className="text-xl font-semibold">{message}</p>}</div>
 
       <AddHabit
         openModal={openModal}

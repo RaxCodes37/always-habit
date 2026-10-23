@@ -6,14 +6,16 @@ import { FaBookmark } from "react-icons/fa";
 
 interface Props {
   habitId: string
+  setMessage: React.Dispatch<React.SetStateAction<string>>
 }
 
-export default function AddBookmarkButton({ habitId }: Props) {
+export default function AddBookmarkButton({ habitId, setMessage }: Props) {
   const bookmarkHabitFunction = async(e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       await bookmarkHabit(habitId);
+      setMessage("Habit bookmarked!")
     } catch (error) {
       console.error(error)
     }
