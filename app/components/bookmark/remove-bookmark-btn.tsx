@@ -1,6 +1,6 @@
 "use client";
 
-import { bookmarkHabit, unbookmarkHabit } from "@/utils/db-actions";
+import { unbookmarkHabit } from "@/utils/db-actions";
 import { GoBookmarkSlashFill } from "react-icons/go";
 import React from "react";
 import { HabitDisplay } from "@/utils/interfaces";
