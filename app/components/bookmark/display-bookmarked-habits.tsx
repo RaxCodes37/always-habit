@@ -8,10 +8,13 @@ import DeleteHabitButton from "../button-components/delete-habit";
 
 interface Props {
   bookmarkedHabits: HabitDisplay[];
-  setBookmarkedHabits: React.Dispatch<React.SetStateAction<HabitDisplay[]>>
+  setBookmarkedHabits: React.Dispatch<React.SetStateAction<HabitDisplay[]>>;
 }
 
-export default function DisplayBookmarkedHabits({ bookmarkedHabits, setBookmarkedHabits }: Props) {
+export default function DisplayBookmarkedHabits({
+  bookmarkedHabits,
+  setBookmarkedHabits,
+}: Props) {
   const router = useRouter();
 
   return (
@@ -41,8 +44,16 @@ export default function DisplayBookmarkedHabits({ bookmarkedHabits, setBookmarke
                   </div>
                 </div>
                 <div className="flex items-center h-15">
-                  <RemoveBookmarkButton habitId={habit.habitId} />
-                  <DeleteHabitButton habitId={habit.habitId} habits={bookmarkedHabits} setHabits={setBookmarkedHabits}></DeleteHabitButton>
+                  <RemoveBookmarkButton
+                    habitId={habit.habitId}
+                    habits={bookmarkedHabits}
+                    setHabits={setBookmarkedHabits}
+                  />
+                  <DeleteHabitButton
+                    habitId={habit.habitId}
+                    habits={bookmarkedHabits}
+                    setHabits={setBookmarkedHabits}
+                  />
                 </div>
               </div>
             </div>

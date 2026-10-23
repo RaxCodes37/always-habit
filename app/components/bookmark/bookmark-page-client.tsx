@@ -21,15 +21,20 @@ export default function BookmarkPageClient({ userId }: Props) {
     getBookmarkedHabitsFunction();
   }, []);
 
-  console.log(bookmarkedHabits)
+  console.log(bookmarkedHabits);
 
   return (
     <div className="text-center h-screen w-150 border border-[#f493e7] bg-[#ab549f]">
       <HomeNavbar />
 
-      <h2 className="mt-5 text-3xl font-semibold"><span className="underline">Bookmarked</span> Habits</h2>
+      <h2 className="mt-5 text-3xl font-semibold">
+        <span className="underline">Bookmarked</span> Habits
+      </h2>
 
-      <DisplayBookmarkedHabits bookmarkedHabits={bookmarkedHabits} setBookmarkedHabits={setBookmarkedHabits}/>
+      <DisplayBookmarkedHabits
+        bookmarkedHabits={bookmarkedHabits}
+        setBookmarkedHabits={setBookmarkedHabits}
+      />
     </div>
   );
 }

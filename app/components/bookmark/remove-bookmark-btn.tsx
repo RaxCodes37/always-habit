@@ -3,14 +3,22 @@
 import { bookmarkHabit, unbookmarkHabit } from "@/utils/db-actions";
 import { GoBookmarkSlashFill } from "react-icons/go";
 import React from "react";
+import { HabitDisplay } from "@/utils/interfaces";
 
 interface Props {
   habitId: string;
+  setHabits: React.Dispatch<React.SetStateAction<HabitDisplay[]>>;
+  habits: HabitDisplay[];
 }
 
-export default function RemoveBookmarkButton({ habitId }: Props) {
+export default function RemoveBookmarkButton({
+  habitId,
+  setHabits,
+  habits,
+}: Props) {
   const unbookmarkHabitFunction = async (e: React.FormEvent) => {
     e.preventDefault();
+    setHabits(habits.filter((h) => h.habitId !== habitId));
 
     try {
       await unbookmarkHabit(habitId);
