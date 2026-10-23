@@ -10,7 +10,7 @@ export default async function BookmarkPage() {
 
   return (
     <div className="flex justify-center">
-      <BookmarkPageClient userId={userId} />;
+      <BookmarkPageClient userId={userId} />
     </div>
   );
 }
