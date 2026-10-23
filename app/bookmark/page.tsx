@@ -8,5 +8,9 @@ export default async function BookmarkPage() {
 
   const userId = session.user.id;
 
-  return <BookmarkPageClient userId={userId}/>;
+  return (
+    <div className="flex justify-center">
+      <BookmarkPageClient userId={userId} />;
+    </div>
+  );
 }
