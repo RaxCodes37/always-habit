@@ -4,7 +4,7 @@ import { HabitDisplay } from "@/utils/interfaces";
 import RemoveBookmarkButton from "./remove-bookmark-btn";
 import { GrMoreVertical } from "react-icons/gr";
 import { useRouter } from "next/navigation";
-import DeleteHabitButton from "../home/delete-habit-btn";
+import DeleteHabitButton from "../button-components/delete-habit";
 
 interface Props {
   bookmarkedHabits: HabitDisplay[];

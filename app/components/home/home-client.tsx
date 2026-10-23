@@ -5,7 +5,7 @@ import DisplayHabits from "./display-habits";
 import React, { useEffect, useState } from "react";
 import { getHabits, logHabit, newHabit } from "@/utils/db-actions";
 import { HabitDisplay } from "@/utils/interfaces";
-import AddHabit from "./add-habit";
+import AddHabit from "../button-components/add-habit";
 
 interface Props {
   userName: string;

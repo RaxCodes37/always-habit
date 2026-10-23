@@ -4,7 +4,7 @@ import { editHabit } from "@/utils/db-actions";
 import { FullHabitInfo } from "@/utils/interfaces";
 import { useState } from "react";
 import { Legend, Line, LineChart, XAxis, YAxis } from "recharts";
-import EditHabitComponent from "./edit-habit";
+import EditHabitComponent from "../button-components/edit-habit";
 
 interface Props {
   habitInfo: FullHabitInfo[];

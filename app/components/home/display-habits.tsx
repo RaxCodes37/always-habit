@@ -4,8 +4,8 @@ import { HabitDisplay } from "@/utils/interfaces";
 import { useRouter } from "next/navigation";
 import { ImFire } from "react-icons/im";
 import { GrMoreVertical } from "react-icons/gr";
-import AddBookmarkButton from "./add-bookmark-btn";
-import DeleteHabitButton from "./delete-habit-btn";
+import AddBookmarkButton from "../button-components/add-bookmark";
+import DeleteHabitButton from "../button-components/delete-habit";
 import React from "react";
 
 interface Props {
