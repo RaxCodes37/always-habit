@@ -63,38 +63,21 @@ export const logHabit = async (
   loggerName: string,
   loggerId: string,
 ) => {
-  const checkHabitLog = db
-    .select()
-    .from(habitLogTable)
-    .where(
-      and(
-        eq(habitLogTable.loggedHabitId, loggedHabitId),
-        eq(habitLogTable.loggerId, loggerId),
-      ),
-    );
-
-  if ((await checkHabitLog).length < 1) {
-    await db.insert(habitLogTable).values({
+  db.transaction(async (tx) => {
+    await tx.insert(habitLogTable).values({
       loggedHabitId,
       loggedHabitName,
       loggerId,
       loggerName,
     });
 
-    await db
+    await tx
       .update(habitLogTable)
       .set({
         logAmount: sql`${habitLogTable.logAmount} + 1`,
       })
       .where(eq(habitLogTable.loggedHabitId, loggedHabitId));
-  } else {
-    await db
-      .update(habitLogTable)
-      .set({
-        logAmount: sql`${habitLogTable.logAmount} + 1`,
-      })
-      .where(eq(habitLogTable.loggedHabitId, loggedHabitId));
-  }
+  });
 };
 
 export const getLoggedHabits = async (loggerId: string, loggerName: string) => {
@@ -149,7 +132,7 @@ export const unbookmarkHabit = async (habitId: string) => {
       bookmarked: false,
     })
     .where(eq(habitsTable.habitId, habitId));
-}
+};
 
 export const getBookmarkedHabits = async (userId: string) => {
   const bookmarkedHabits = await db
@@ -159,5 +142,5 @@ export const getBookmarkedHabits = async (userId: string) => {
       and(eq(habitsTable.creatorId, userId), eq(habitsTable.bookmarked, true)),
     );
 
-  return bookmarkedHabits as HabitDisplay[]
+  return bookmarkedHabits as HabitDisplay[];
 };
